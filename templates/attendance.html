@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Mark Attendance</h2>
+    <form method="POST">
+        <label>Date: <input type="date" name="date" value="{{ date.today().strftime('%Y-%m-%d') }}"></label>
+        <table>
+            <tr><th>Name</th><th>Status</th></tr>
+            {% for s in students %}
+            <tr>
+                <td>{{ s[1] }}</td>
+                <td>
+                    <select name="{{ s[0] }}">
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Submit Attendance</button>
+    </form>
+    <a href="/admin/dashboard">Back to Dashboard</a>
+</body>
+</html>

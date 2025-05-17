@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Welcome, {{ session['name'] }}</h2>
+    <h3>Attendance Records</h3>
+    <table>
+        <tr><th>Date</th><th>Status</th></tr>
+        {% for record in records %}
+        <tr><td>{{ record[0] }}</td><td>{{ record[1] }}</td></tr>
+        {% endfor %}
+    </table>
+    <h4>Attendance Percentage: {{ percentage }}%</h4>
+    <a href="/logout">Logout</a>
+</body>
+</html>
